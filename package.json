@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "debug": "3.1.0",
-    "odbc": "git+https://github.com/ratanakvlun/node-odbc.git#1ee1763",
+    "odbc": "git+https://github.com/ratanakvlun/node-odbc.git#e6c9769",
     "uuid": "3.1.0"
   }
 }

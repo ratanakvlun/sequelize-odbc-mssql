@@ -1,33 +1,35 @@
 {
-  "name": "sequelize-msnodesqlv8",
-  "version": "0.2.6-beta.7",
-  "description": "A sequelize dialect driver for the msnodesqlv8 module.",
+  "name": "sequelize-odbc",
+  "version": "1.0.0",
+  "description": "A sequelize dialect driver for the @ratanakvlun/node-odbc module.",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha.cmd"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ratanakvlun/sequelize-msnodesqlv8.git"
+    "url": "git+https://github.com/ratanakvlun/sequelize-odbc.git"
   },
   "keywords": [
     "sequelize",
-    "msnodesqlv8",
+    "node-odbc",
+    "odbc",
     "mssql",
     "sqlserver"
   ],
   "author": "Ratanak Lun",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "3.1.0",
     "chai": "4.1.2",
     "chai-as-promised": "7.1.1",
     "config": "1.26.2",
     "mocha": "4.0.0",
-    "sequelize": "4.13.5"
+    "sequelize": "3.24.1"
   },
   "dependencies": {
     "debug": "3.1.0",
-    "msnodesqlv8": "0.3.2",
+    "odbc": "git+https://github.com/ratanakvlun/node-odbc.git#1ee1763",
     "uuid": "3.1.0"
   }
 }

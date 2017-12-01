@@ -23,11 +23,13 @@ describe('lib/request.js', () => {
 	describe('#execute', () => {
 		it('single statement calculation query', (done) => {
 			let rowErr;
+
 			let req = new driver.Request('SELECT 1+1', (err) => {
 				if (rowErr instanceof Error) { done(rowErr); }
 				else if (err instanceof Error) { done(err); }
 				else done();
 			});
+
 			req.on('row', (data) => {
 				try {
 					if (!rowErr) { assert.strictEqual(data[0].value, 2); }
@@ -35,6 +37,7 @@ describe('lib/request.js', () => {
 					rowErr = e;
 				}
 			});
+
 			req.execute(db);
 		});
 
@@ -42,11 +45,13 @@ describe('lib/request.js', () => {
 			let i = 0;
 			let expected = [2, 4];
 			let rowErr;
+
 			let req = new driver.Request('SELECT 1+1; SELECT 2+2', (err) => {
 				if (rowErr instanceof Error) { done(rowErr); }
 				else if (err instanceof Error) { done(err); }
 				else done();
 			});
+
 			req.on('row', (data) => {
 				try {
 					let j = i;
@@ -56,38 +61,42 @@ describe('lib/request.js', () => {
 					rowErr = e;
 				}
 			});
+
 			req.execute(db);
 		});
 
-		it('handle low severity error in single statement query', (done) => {
+		it('ignore low severity (<11) error in single statement query', (done) => {
 			let req = new driver.Request(`RAISERROR('Custom Error', 1, 1)`, (err) => {
-				if (err instanceof Error && err.message.match(/Custom Error/)) { done(); }
-				else done(new Error('expected custom error'));
+				if (err) { done(new Error('expected error to be ignored')); }
+				else done();
 			});
+
 			req.execute(db);
 		});
 
-		it('handle high severity error in single statement query', (done) => {
+		it('handle high severity (>=11) error in single statement query', (done) => {
 			let req = new driver.Request(`RAISERROR('Custom Error', 18, 1)`, (err) => {
 				if (err instanceof Error && err.message.match(/Custom Error/)) { done(); }
 				else done(new Error('expected custom error'));
 			});
+
 			req.execute(db);
 		});
 
 		it('connection can still be used after low severity error', (done) => {
 			let req = new driver.Request(`RAISERROR('Custom Error', 1, 1)`, (err) => {
-				if (err instanceof Error && err.message.match(/Custom Error/)) {
-					req2.execute(db);
-				}
-				else done(new Error('expected custom error'));
+				if (err) { done(new Error('expected error to be ignored')); }
+				req2.execute(db);
 			});
+
 			let rowErr;
+
 			let req2 = new driver.Request('SELECT 1+1', (err) => {
 				if (rowErr instanceof Error) { done(rowErr); }
 				else if (err instanceof Error) { done(err); }
 				else done();
 			});
+
 			req2.on('row', (data) => {
 				try {
 					if (!rowErr) { assert.strictEqual(data[0].value, 2); }
@@ -95,6 +104,7 @@ describe('lib/request.js', () => {
 					rowErr = e;
 				}
 			});
+
 			req.execute(db);
 		});
 
@@ -105,12 +115,15 @@ describe('lib/request.js', () => {
 				}
 				else done(new Error('expected custom error'));
 			});
+
 			let rowErr;
+
 			let req2 = new driver.Request('SELECT 1+1', (err) => {
 				if (rowErr instanceof Error) { done(rowErr); }
 				else if (err instanceof Error) { done(err); }
 				else done();
 			});
+
 			req2.on('row', (data) => {
 				try {
 					if (!rowErr) { assert.strictEqual(data[0].value, 2); }
@@ -118,6 +131,7 @@ describe('lib/request.js', () => {
 					rowErr = e;
 				}
 			});
+
 			req.execute(db);
 		});
 	});

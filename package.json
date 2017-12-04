@@ -1,5 +1,5 @@
 {
-  "name": "sequelize-odbc",
+  "name": "sequelize-odbc-mssql",
   "version": "1.0.0",
   "description": "A sequelize dialect driver for the @ratanakvlun/node-odbc module.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ratanakvlun/sequelize-odbc.git"
+    "url": "git+https://github.com/ratanakvlun/sequelize-odbc-mssql.git"
   },
   "keywords": [
     "sequelize",

@@ -1,8 +1,10 @@
 {
-	"database": {
-		"server": "localhost",
-		"instanceName": "SQLEXPRESS",
-		"name": "sequelize-msnodesqlv8-test",
-		"trustedConnection": true
-	}
+  "database": {
+    "server": "localhost",
+    "instanceName": "SQLEXPRESS",
+    "database": "node_odbc_test",
+    "trustedConnection": false,
+    "userName": "test",
+    "password": "test"
+  }
 }

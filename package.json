@@ -2,23 +2,37 @@
   "name": "sequelize-odbc-mssql",
   "version": "1.0.0",
   "description": "A sequelize dialect driver for the @ratanakvlun/node-odbc module.",
-  "main": "index.js",
-  "scripts": {
-    "test": "node_modules/.bin/mocha.cmd"
-  },
+  "license": "ISC",
+  "keywords": [
+    "sequelize",
+    "mssql",
+    "sqlserver",
+    "odbc",
+    "sql",
+    "database"
+  ],
+  "homepage": "https://github.com/ratanakvlun/sequelize-odbc-mssql",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ratanakvlun/sequelize-odbc-mssql.git"
   },
-  "keywords": [
-    "sequelize",
-    "node-odbc",
-    "odbc",
-    "mssql",
-    "sqlserver"
+  "bugs": {
+    "url": "https://github.com/ratanakvlun/sequelize-odbc-mssql/issues"
+  },
+  "contributors": [
+    {
+      "name": "Ratanak Lun",
+      "email": "ratanakvlun@gmail.com"
+    }
   ],
-  "author": "Ratanak Lun",
-  "license": "ISC",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "@ratanakvlun/node-odbc": "https://github.com/ratanakvlun/node-odbc/releases/download/v2.0.2/ratanakvlun-node-odbc-2.0.2-win32.tgz",
+    "debug": "3.1.0",
+    "uuid": "3.1.0"
+  },
   "devDependencies": {
     "eslint": "3.1.0",
     "chai": "4.1.2",
@@ -27,9 +41,8 @@
     "mocha": "4.0.0",
     "sequelize": "3.24.1"
   },
-  "dependencies": {
-    "debug": "3.1.0",
-    "odbc": "git+https://github.com/ratanakvlun/node-odbc.git#e6c9769",
-    "uuid": "3.1.0"
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
   }
 }

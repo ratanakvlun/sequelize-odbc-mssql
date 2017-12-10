@@ -1,7 +1,7 @@
 {
   "name": "sequelize-odbc-mssql",
   "version": "1.0.0",
-  "description": "A sequelize dialect driver for the @ratanakvlun/node-odbc module.",
+  "description": "Sequelize dialect driver for the @ratanakvlun/node-odbc module",
   "license": "ISC",
   "keywords": [
     "sequelize",
@@ -29,19 +29,19 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@ratanakvlun/node-odbc": "https://github.com/ratanakvlun/node-odbc/releases/download/v2.0.2/ratanakvlun-node-odbc-2.0.2-win32.tgz",
+    "@ratanakvlun/node-odbc": "https://github.com/ratanakvlun/node-odbc/releases/download/v2.0.3/ratanakvlun-node-odbc-2.0.3-win32.tgz",
     "debug": "3.1.0",
     "uuid": "3.1.0"
   },
   "devDependencies": {
-    "eslint": "3.1.0",
+    "eslint": "4.13.0",
     "chai": "4.1.2",
     "chai-as-promised": "7.1.1",
-    "config": "1.26.2",
-    "mocha": "4.0.0",
-    "sequelize": "3.24.1"
+    "config": "1.28.1",
+    "mocha": "4.0.1",
+    "sequelize": "3.31.1"
   },
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "mocha"
   }

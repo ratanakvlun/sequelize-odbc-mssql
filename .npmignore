@@ -1,2 +1,5 @@
 .npmignore
+.eslintrc
 test
+examples
+benchmark

@@ -43,6 +43,8 @@
   },
   "main": "./index.js",
   "scripts": {
+    "install-deps": "npm update --no-save",
+    "preinstall": "npm run install-deps",
     "test": "mocha"
   }
 }

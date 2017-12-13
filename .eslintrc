@@ -22,7 +22,10 @@
     "keyword-spacing": "error",
     "indent": [
       "error",
-      "tab"
+      "tab",
+      {
+        "SwitchCase": 1
+      }
     ],
     "quotes": [
       "error",

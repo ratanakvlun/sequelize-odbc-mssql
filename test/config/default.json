@@ -2,7 +2,7 @@
   "database": {
     "server": "localhost",
     "instanceName": "SQLEXPRESS",
-    "database": "node_odbc_test",
+    "database": "sequelize_odbc_test",
     "trustedConnection": false,
     "userName": "test",
     "password": "test"

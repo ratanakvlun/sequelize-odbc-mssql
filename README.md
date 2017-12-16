@@ -1,31 +1,33 @@
-[npm-url]: https://npmjs.org/package/sequelize-msnodesqlv8
-[npm-version-image]: https://img.shields.io/npm/v/sequelize-msnodesqlv8.svg
-[npm-downloads-image]: https://img.shields.io/npm/dt/sequelize-msnodesqlv8.svg
+[npm-url]: https://npmjs.org/package/sequelize-odbc-mssql
+[npm-version-image]: https://img.shields.io/npm/v/sequelize-odbc-mssql.svg
+[npm-downloads-image]: https://img.shields.io/npm/dt/sequelize-odbc-mssql.svg
 
-sequelize-msnodesqlv8
-=====================
+# sequelize-odbc-mssql
+Sequelize dialect driver for the [`@ratanakvlun/node-odbc`](https://github.com/ratanakvlun/node-odbc) module
 
 [![npm version][npm-version-image]][npm-url] [![npm downloads][npm-downloads-image]][npm-url]
 
-The `sequelize-msnodesqlv8` module is a mssql dialect driver for [`sequelize`](https://github.com/sequelize/sequelize).
+The `sequelize-odbc-mssql` module is a MSSQL dialect driver for [`sequelize`](https://github.com/sequelize/sequelize).
 
-There are many node mssql clients and `sequelize` defaults to using [`tedious`](https://github.com/tediousjs/tedious), but being pure javascript,`tedious` lacks support for integrated security. [`msnodesqlv8`](https://github.com/TimelordUK/node-sqlserver-v8) is a client that interfaces with a native odbc library. This allows integrated security to be used. It does require additional binaries to deploy, but fortunately, `msnodesqlv8` is distributed with binaries for the most common architectures.
+There are many Node.js MSSQL clients and `sequelize` defaults to using [`tedious`](https://github.com/tediousjs/tedious), but being pure Javascript,`tedious` lacks support for integrated security on Windows systems. `@ratanakvlun/node-odbc` is a client that interfaces with a native ODBC library which allows integrated security to be used.
 
-The purpose of `sequelize-msnodesqlv8` is to provide a dialect driver to `sequelize` so that `msnodesqlv8` can be used instead of `tedious`.
+The purpose of `sequelize-odbc-mssql` is to provide `sequelize` with a dialect driver for `@ratanakvlun/node-odbc`.
 
 ## Installation
 
-```npm install sequelize-msnodesqlv8```
+```
+npm install sequelize-odbc-mssql
+```
 
 ## Usage
 
-Using `sequelize-msnodesqlv8` is simple. Just specify `sequelize-msnodesqlv8` as the `dialectModulePath`:
+Using `sequelize-odbc-mssql` is simple. Just specify `sequelize-odbc-mssql` as the `dialectModulePath`:
 ```javascript
 const Sequelize = require('sequelize');
 
 let db = new Sequelize({
   dialect: 'mssql',
-  dialectModulePath: 'sequelize-msnodesqlv8',
+  dialectModulePath: 'sequelize-odbc-mssql',
   dialectOptions: {
     /* Configuration */
   }
@@ -34,23 +36,24 @@ let db = new Sequelize({
 
 ### Configuration
 
-The following options are used by `sequelize-msnodesqlv8`. Options specific to `sequelize` like pooling still apply to the `sequelize` layer.
+The following `sequelize` options are used by `sequelize-odbc-mssql`. Options specific to `sequelize` like pooling still apply to the `sequelize` layer.
 * _database_ - Name of the database to use.
 * _username_ - Username if using SQL authentication.
 * _password_ - Password if using SQL authentication.
 * _host_ - Hostname of the server. Default: `localhost`
-* _dialectOptions.driver_ - Name of the odbc driver to use (e.g. SQL Server Native Client 10.0).
+* _port_ - Port if using TCP/IP to connect.
+* _dialectOptions.driver_ - Name of the ODBC driver to use (e.g. SQL Server Native Client 10.0).
 * _dialectOptions.instanceName_ - Name of the instance to connect to.
 * _dialectOptions.trustedConnection_ - Indicates whether integrated security should be used. Default: `false`
-* _dialectOptions.connectionString_ - Connection string to use. Overrides all other options.
+* _dialectOptions.connectionString_ - Connection string to use. Overrides all other options if present.
 
-If a driver is not provided in either `dialectOptions.driver` or the connection string, `sequelize-msnodesqlv8` will attempt to detect the driver.
+If a driver is not provided in either `dialectOptions.driver` or `dialectOptions.connectionString`, `sequelize-odbc-mssql` will attempt to detect a driver.
 
 #### Example: Using a connection string directly with `sequelize` pooling.
 ```javascript
 let db = new Sequelize({
   dialect: 'mssql',
-  dialectModulePath: 'sequelize-msnodesqlv8',
+  dialectModulePath: 'sequelize-odbc-mssql',
   dialectOptions: {
     connectionString: 'Driver={SQL Server Native Client 10.0};Server=localhost\\SQLEXPRESS;Database=finances;Trusted_Connection=yes;'
   },
@@ -62,11 +65,11 @@ let db = new Sequelize({
 });
 ```
 
-#### Example: Using options for Windows authentication.
+#### Example: Using Windows authentication.
 ```javascript
 let db = new Sequelize({
   dialect: 'mssql',
-  dialectModulePath: 'sequelize-msnodesqlv8',
+  dialectModulePath: 'sequelize-odbc-mssql',
   dialectOptions: {
     driver: 'SQL Server Native Client 10.0',
     instanceName: 'SQLEXPRESS',
@@ -77,11 +80,11 @@ let db = new Sequelize({
 });
 ```
 
-#### Example: Using options for SQL authentication.
+#### Example: Using SQL authentication.
 ```javascript
 let db = new Sequelize({
   dialect: 'mssql',
-  dialectModulePath: 'sequelize-msnodesqlv8',
+  dialectModulePath: 'sequelize-odbc-mssql',
   dialectOptions: {
     driver: 'SQL Server Native Client 10.0',
     instanceName: 'SQLEXPRESS'

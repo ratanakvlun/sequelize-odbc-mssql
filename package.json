@@ -29,7 +29,7 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "@ratanakvlun/node-odbc": "https://github.com/ratanakvlun/node-odbc/releases/download/v2.0.4/ratanakvlun-node-odbc-2.0.4-win32.tgz",
+    "@ratanakvlun/node-odbc": "https://github.com/ratanakvlun/node-odbc/releases/download/v2.0.5/ratanakvlun-node-odbc-2.0.5-win32.tgz",
     "debug": "^3.1.0",
     "moment": "^2.19.4",
     "uuid": "^3.1.0"
